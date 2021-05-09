@@ -3,6 +3,7 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Constants\OrderStatusConstants;
@@ -86,5 +87,14 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
             ->havingRaw("COUNT(user_id) > 1")
             ->orderBy('total_orders')
             ->paginate();
+    }
+
+    public function setPaidAnOrder(int $orderId): void
+    {
+        $this->model->where('id', $orderId)->first()->update([
+                'status_id' => OrderStatusConstants::PAID,
+                'paid_date' => Carbon::now(),
+            ]
+        );
     }
 }

@@ -12,4 +12,6 @@ interface OrderRepositoryInterface extends EloquentRepositoryInterface
     public function lastPaidOrderCustomers();
 
     public function usersWithMoreThanOnePaidOrder();
+
+    public function setPaidAnOrder(int $orderId);
 }

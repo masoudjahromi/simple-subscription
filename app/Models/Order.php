@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, HasEvents;
 
     protected $fillable = [
         'user_id',
@@ -35,5 +36,10 @@ class Order extends Model
     public function status(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(OrderStatus::class, 'id', 'status_id');
+    }
+
+    public function delivery(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(OrderDelivery::class);
     }
 }

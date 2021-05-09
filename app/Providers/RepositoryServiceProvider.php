@@ -13,6 +13,10 @@ use App\Repository\Eloquent\OrderStatusRepository;
 use App\Repository\OrderStatusRepositoryInterface;
 use App\Repository\Eloquent\SubscriptionRepository;
 use App\Repository\SubscriptionRepositoryInterface;
+use App\Repository\DeliveryTypeRepositoryInterface;
+use App\Repository\Eloquent\DeliveryTypeRepository;
+use App\Repository\OrderDeliveryRepositoryInterface;
+use App\Repository\Eloquent\OrderDeliveryRepository;
 use App\Repository\Eloquent\UserSubscriptionRepository;
 use App\Repository\UserSubscriptionRepositoryInterface;
 
@@ -36,6 +40,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubscriptionRepositoryInterface::class, SubscriptionRepository::class);
         $this->app->bind(OrderStatusRepositoryInterface::class, OrderStatusRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+        $this->app->bind(DeliveryTypeRepositoryInterface::class, DeliveryTypeRepository::class);
+        $this->app->bind(OrderDeliveryRepositoryInterface::class, OrderDeliveryRepository::class);
     }
 
     /**

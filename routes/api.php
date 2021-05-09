@@ -23,11 +23,17 @@ Route::prefix('/users')->group(function () {
 });
 
 Route::prefix('/orders')->group(function () {
+    Route::get('detail/{orderId}', [\App\Http\Controllers\OrderController::class, 'detail']);
     Route::post('create/', [\App\Http\Controllers\OrderController::class, 'create']);
     Route::get('last-paid/', [\App\Http\Controllers\OrderController::class, 'getLastPaidOrders']);
+    Route::post('set-paid/', [\App\Http\Controllers\OrderController::class, 'setPaid']);
 });
 
 Route::prefix('/subscriptions')->group(function () {
     Route::get('list/', [\App\Http\Controllers\SubscriptionController::class, 'list']);
+});
+
+Route::prefix('/deliveries')->group(function () {
+    Route::get('list/', [\App\Http\Controllers\DeliveryController::class, 'list']);
 });
 
