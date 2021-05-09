@@ -42,4 +42,9 @@ class Order extends Model
     {
         return $this->hasOne(OrderDelivery::class);
     }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class, 'id', 'subscription_id');
+    }
 }

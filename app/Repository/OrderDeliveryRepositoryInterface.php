@@ -9,4 +9,5 @@ namespace App\Repository;
  */
 interface OrderDeliveryRepositoryInterface extends EloquentRepositoryInterface
 {
+    public function doChunk();
 }

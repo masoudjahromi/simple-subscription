@@ -87,13 +87,4 @@ class OrderController extends Controller
         return response()->json(['status' => true], 200);
     }
 
-    /**
-     * @param int $orderId
-     *
-     * @return JsonResponse
-     */
-    public function setDelivery(int $orderId): JsonResponse
-    {
-    }
-
 }

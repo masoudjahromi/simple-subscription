@@ -3,6 +3,7 @@
 namespace App\Repository\Eloquent;
 
 use App\Models\OrderDelivery;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Repository\OrderDeliveryRepositoryInterface;
 
@@ -26,5 +27,13 @@ class OrderDeliveryRepository extends BaseRepository implements OrderDeliveryRep
     public function __construct(OrderDelivery $model)
     {
         parent::__construct($model);
+    }
+
+    /**
+     * @return Builder
+     */
+    public function doChunk(): Builder
+    {
+        return $this->model->with(['order.user', 'order.subscription'])->orderByDesc('id');
     }
 }

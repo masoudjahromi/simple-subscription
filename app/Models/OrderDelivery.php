@@ -24,9 +24,9 @@ class OrderDelivery extends Model
         'updated_at',
     ];
 
-    public function orders()
+    public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
 
     public function type()

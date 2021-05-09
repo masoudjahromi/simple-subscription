@@ -35,5 +35,6 @@ Route::prefix('/subscriptions')->group(function () {
 
 Route::prefix('/deliveries')->group(function () {
     Route::get('list/', [\App\Http\Controllers\DeliveryController::class, 'list']);
+    Route::get('export/csv', [\App\Http\Controllers\DeliveryController::class, 'exportCsv']);
 });
 

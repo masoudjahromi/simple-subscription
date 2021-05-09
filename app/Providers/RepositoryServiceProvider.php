@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\CsvDeliveryExportable;
+use App\Services\DeliveryExportableInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\Eloquent\BaseRepository;
 use App\Repository\Eloquent\UserRepository;
@@ -42,6 +44,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(DeliveryTypeRepositoryInterface::class, DeliveryTypeRepository::class);
         $this->app->bind(OrderDeliveryRepositoryInterface::class, OrderDeliveryRepository::class);
+        $this->app->bind(DeliveryExportableInterface::class, CsvDeliveryExportable::class);
     }
 
     /**
